@@ -1,0 +1,37 @@
+<h1><%= @post.title %></h1>
+
+<p>
+
+<p><%= @post.content %></p>
+
+<p><%= @post.image %></p>
+
+
+<h2>コメント</h2>
+<ul>
+  <% if @post.comments.any? %>
+    <% @post.comments.each do |comment| %>
+    <li id="comment_<%= comment.id %>"><%= comment.body %> (by <%= comment.commenter %>)
+      <%= link_to 'delete' , [comment.post, comment], :comfirm => 'Sure?', :method => :delete, :remote=> true %></li>
+    <% end %>
+  <% else %>
+    <li>no comment</li>
+  <% end %>
+<ul>
+
+  <%= render 'commentform' %>
+
+
+<p><%= link_to 'EDIT', edit_post_path %></p>
+</p>
+
+<%= link_to 'HOME', posts_path %> | <%= link_to 'NEW' , new_post_path %>
+
+
+<script>
+$(function() {
+  $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr){
+    $('#comment_'+data.comment.id).fadeOut("slow");
+    });
+});
+</script>
