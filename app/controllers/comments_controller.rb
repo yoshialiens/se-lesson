@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = Post.find(params[:post_id]).comments.new(params.require(:comment).permit(:commenter, :body))
+    @comment = Post.find(params[:post_id]).comments.new(params.require(:comment).permit(:commenter, :body, :avatar))
     if @comment.save
       redirect_to post_path(@post)
     else

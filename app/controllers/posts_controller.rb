@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:title, :content)) #
+    @post = Post.new(project_params) #
     if @post.save 
       redirect_to posts_path, notice: '作成されました！'
     else
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
 
   def update
     @post =Post.find(params[:id])
-    if @post.update_attributes(params.require(:post).permit(:title, :content))
+    if @post.update_attributes(project_params)
       redirect_to posts_path, notice: '更新されました！'
     else
       render action: 'edit'
@@ -46,6 +46,17 @@ class PostsController < ApplicationController
     render json: { post: @post }
   end
 
+
+private
+ 
+  def project_params
+    params[:post].permit(:title ,:content)
+      params.require(:post).permit(:title, :content, :avatar)
+  end
+
+  def set_project
+    @post = Post.find(params[:id])
+  end
 
 
 end

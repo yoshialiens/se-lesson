@@ -14,3 +14,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+public/system/posts/avatars/000/000/020/large/tekken.jpg
+public/system/posts/avatars/000/000/020/medium/tekken.jpg
+public/system/posts/avatars/000/000/020/original/tekken.jpg
+public/system/posts/avatars/000/000/020/thumb/tekken.jpg

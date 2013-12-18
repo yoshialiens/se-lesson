@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { :thumb => ["50x50#", :jpg], :medium => ["100x100#", :jpg], :large => ["300x300>", :jpg] }, default_url: "http://nikkegroup.com/wp-content/uploads/2013/08/nikke-top1.jpg"
 
   has_many :comments
 
@@ -7,8 +7,10 @@ class Post < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :presence => true,
                       :length => { :minimum => 5 }
-  validates_attachment :avatar, presence: true,
-    content_type: { content_type: ["image/jpg", "image/png"] },
-    size: { less_than: 2.megabytes }
+  # validates_attachment :avatar, presence: true,
+  #   content_type: { content_type: ["image/jpg", "image/png"] },
+  #   size: { less_than: 2.megabytes }
+
+
 
 end
