@@ -48,3 +48,6 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'carrierwave'
+gem 'rmagick'
+gem "paperclip", "~> 3.0"
