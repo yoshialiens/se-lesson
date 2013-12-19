@@ -20,6 +20,12 @@
 
 <%= link_to 'HOME', posts_path %> | <%= link_to 'NEW' , new_post_path %>
 
+<% if user_signed_in? %>
+        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Facebook Login", user_omniauth_authorize_path(:facebook) %>
+      <% end %>
+
 <script>
 $(function() {
   setTimeout(function(){

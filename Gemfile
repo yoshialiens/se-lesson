@@ -51,3 +51,5 @@ gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
 gem "paperclip", "~> 3.0"
+gem 'omniauth'
+gem 'omniauth-facebook'
